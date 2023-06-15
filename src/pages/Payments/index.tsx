@@ -2,12 +2,11 @@ import { columns } from "./columns";
 import { DataTable } from "./dataTable";
 import {
     useQuery,
-    useQueryClient,
 } from '@tanstack/react-query';
 import { getPaymentData } from "@/services/paymentData";
 
 const Payments = () => {
-    const query = useQuery({ queryKey: ['todos'], queryFn: getPaymentData });
+    const query = useQuery({ queryKey: ['payments'], queryFn: getPaymentData });
 
     return (
         <div className="container mx-auto py-10">
