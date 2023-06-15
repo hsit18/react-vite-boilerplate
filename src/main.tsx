@@ -1,5 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
+
 import Home from './pages/Home';
 import './styles/index.css';
 import {
@@ -7,6 +12,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Payments from './pages/Payments';
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -21,6 +28,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('app') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>,
 )

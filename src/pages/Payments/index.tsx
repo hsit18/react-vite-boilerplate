@@ -1,28 +1,17 @@
-import { Payment, columns, PAYMENT_STATUS } from "./columns";
+import { columns } from "./columns";
 import { DataTable } from "./dataTable";
-import { faker } from '@faker-js/faker';
-
-export function createRandomData(): Payment {
-    return {
-        id: faker.datatype.uuid(),
-        name: faker.person.fullName(),
-        phoneNumber: faker.phone.number('501-###-###'),
-        amount: faker.number.int({ min: 0, max: 1000 }),
-        status: faker.helpers.enumValue(PAYMENT_STATUS),
-        email: faker.internet.email(),
-    };
-}
+import {
+    useQuery,
+    useQueryClient,
+} from '@tanstack/react-query';
+import { getPaymentData } from "@/services/paymentData";
 
 const Payments = () => {
-    const getData = (): Payment[] => {
-        return faker.helpers.multiple(createRandomData, {
-            count: 5000,
-        })
-    }
+    const query = useQuery({ queryKey: ['todos'], queryFn: getPaymentData });
 
     return (
         <div className="container mx-auto py-10">
-            <DataTable columns={columns} data={getData()} />
+            <DataTable columns={columns} data={query.data || []} />
         </div>
     )
 };
