@@ -4,6 +4,8 @@ import {
     getCoreRowModel,
     getPaginationRowModel,
     useReactTable,
+    SortingState,
+    getSortedRowModel
 } from "@tanstack/react-table"
 
 import {
@@ -15,6 +17,9 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
+import React from "react";
+import { ArrowDownAZ, ArrowUpAZ, ArrowUpDown } from "lucide-react"
+
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -25,11 +30,19 @@ export function DataTable<TData, TValue>({
     columns,
     data,
 }: DataTableProps<TData, TValue>) {
+
+    const [sorting, setSorting] = React.useState<SortingState>([]);
+
     const table = useReactTable({
         data,
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
+        onSortingChange: setSorting,
+        getSortedRowModel: getSortedRowModel(),
+        state: {
+            sorting,
+        },
     })
 
     return (
@@ -40,13 +53,20 @@ export function DataTable<TData, TValue>({
                         <TableRow key={headerGroup.id}>
                             {headerGroup.headers.map((header) => {
                                 return (
-                                    <TableHead key={header.id}>
+                                    <TableHead key={header.id} className={header.column.getCanSort()
+                                        ? 'cursor-pointer select-none'
+                                        : ''} onClick={header.column.getToggleSortingHandler()}>
                                         {header.isPlaceholder
                                             ? null
                                             : flexRender(
                                                 header.column.columnDef.header,
                                                 header.getContext()
                                             )}
+                                        {{
+                                            asc: <ArrowUpAZ className="ml-2 h-4 w-4 inline-block" />,
+                                            desc: <ArrowDownAZ className="ml-2 h-4 w-4 inline-block" />,
+                                        }[header.column.getIsSorted() as string] ?? null}
+                                        {!header.column.getIsSorted() && <ArrowUpDown className="ml-2 h-4 w-4 inline-block" />}
                                     </TableHead>
                                 )
                             })}
@@ -61,7 +81,7 @@ export function DataTable<TData, TValue>({
                                 data-state={row.getIsSelected() && "selected"}
                             >
                                 {row.getVisibleCells().map((cell) => (
-                                    <TableCell key={cell.id}>
+                                    <TableCell key={cell.id} className="p-3">
                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                     </TableCell>
                                 ))}
