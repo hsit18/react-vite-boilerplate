@@ -38,7 +38,7 @@ const Users = () => {
 
                 //once the user has scrolled within 300px of the bottom of the table, fetch more data if there is any
                 if (
-                    scrollHeight - scrollTop - clientHeight < 100 &&
+                    scrollHeight - scrollTop - clientHeight < 300 &&
                     !isFetching &&
                     totalFetched < totalDBRowCount
                 ) {
@@ -55,7 +55,7 @@ const Users = () => {
     }, [fetchMoreOnBottomReached])
 
     return (
-        <div className="container overflow-auto h-64"
+        <div className="container overflow-auto h-[600px]"
             onScroll={e => fetchMoreOnBottomReached(e.target as HTMLDivElement)}
             ref={tableContainerRef}
         >

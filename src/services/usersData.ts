@@ -25,5 +25,5 @@ export const getPaginatedUserData = (pageIndex: number, pageSize: number): Promi
   return new Promise((resolve) => setTimeout(() => resolve({
     data: data.slice((pageIndex) * pageSize, (pageIndex + 1) * pageSize),
     totalRecords: 5000
-  }), 500));
+  }), 200));
 }
