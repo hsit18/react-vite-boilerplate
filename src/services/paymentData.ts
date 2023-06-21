@@ -12,8 +12,20 @@ export function createRandomData(): Payment {
   };
 }
 
+export const getData = (): Payment[] => {
+  return faker.helpers.multiple(createRandomData, {
+    count: 5000,
+  })
+}
+
+const data = getData();
+
 export const getPaymentData = (): Promise<Payment[]> => {
   return new Promise((resolve) => setTimeout(() => resolve(faker.helpers.multiple(createRandomData, {
     count: 5000,
   })), 5000));
+}
+
+export const getPaginatedPaymentData = (pageIndex: number, pageSize: number): Promise<Payment[]> => {
+  return new Promise((resolve) => setTimeout(() => resolve(data.slice((pageIndex - 1) * pageSize, pageIndex * pageSize)), 1000));
 }
