@@ -8,10 +8,12 @@ import {
 import './styles/index.css';
 import {
   RouterProvider,
+  createBrowserRouter
 } from "react-router-dom";
-import { router } from './routes';
+import { routeConfig } from './routes';
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
+const router = createBrowserRouter(routeConfig);
 
 ReactDOM.createRoot(document.getElementById('app') as HTMLElement).render(
   <React.StrictMode>

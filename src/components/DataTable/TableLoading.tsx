@@ -14,7 +14,7 @@ export const TableLoading = ({ totalColumns, totalRows = 1 }: TableLoadingProps)
   return (
     <>
       {[...Array(totalRows).keys()].map(n => (
-        <TableRow key={n}>
+        <TableRow key={n} data-testid="table-loading-row">
           <TableCell colSpan={totalColumns}>
             <Skeleton className="w-[100%] h-[20px] rounded-2xl" />
           </TableCell>

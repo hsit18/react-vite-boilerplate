@@ -1,11 +1,8 @@
-import {
-  createBrowserRouter,
-} from "react-router-dom";
 import Payments from './pages/Payments';
 import Home from './pages/Home';
 import Users from './pages/Users';
 
-export const router = createBrowserRouter([
+export const routeConfig = [
   {
     path: "/",
     element: <Home />,
@@ -18,4 +15,4 @@ export const router = createBrowserRouter([
     path: "/users",
     element: <Users />,
   },
-]);
+];
