@@ -23,7 +23,7 @@ const data = getData();
 export const getPaymentData = (): Promise<Payment[]> => {
   return new Promise((resolve) => setTimeout(() => resolve(faker.helpers.multiple(createRandomData, {
     count: 5000,
-  })), 5000));
+  })), 100));
 }
 
 export const getPaginatedPaymentData = (pageIndex: number, pageSize: number): Promise<Payment[]> => {

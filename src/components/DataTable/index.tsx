@@ -79,6 +79,7 @@ export function DataTable<TData, TValue>({
           )}
           {(table.getRowModel().rows || []).map((row) => (
             <TableRow
+              role="row"
               key={row.id}
               data-state={row.getIsSelected() && "selected"}
             >
