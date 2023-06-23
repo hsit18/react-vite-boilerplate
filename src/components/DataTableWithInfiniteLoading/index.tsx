@@ -2,7 +2,6 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
-  getPaginationRowModel,
   useReactTable,
   SortingState,
   getSortedRowModel
@@ -17,7 +16,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
 import { ArrowDownAZ, ArrowUpAZ, ArrowUpDown } from "lucide-react"
 import { TableLoading } from "@/components/DataTable/TableLoading";
 
