@@ -12,7 +12,6 @@ const Users = () => {
         ['users'],
         async ({ pageParam = 0 }) => {
             const res = await getPaginatedUserData(pageParam, PAGE_SIZE);
-            console.log("DATA fetched ....", res);
             return res;
         },
         {
@@ -55,7 +54,7 @@ const Users = () => {
     }, [fetchMoreOnBottomReached])
 
     return (
-        <div className="container overflow-auto h-[600px]"
+        <div className="table-wrp block overflow-auto h-[600px]"
             onScroll={e => fetchMoreOnBottomReached(e.target as HTMLDivElement)}
             ref={tableContainerRef}
         >

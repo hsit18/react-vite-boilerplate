@@ -1,27 +1,24 @@
 import { Payment } from "@/types/payment";
-import { ColumnDef } from "@tanstack/react-table";
+import { createColumnHelper } from "@tanstack/react-table";
 
-export const columns: ColumnDef<Payment>[] = [
-    {
-        accessorKey: "status",
+const columnHelper = createColumnHelper<Payment>();
+export const columns = [
+    columnHelper.accessor("status", {
         header: "Status",
         enableSorting: true
-    },
-    {
-        accessorKey: "name",
+    }),
+    columnHelper.accessor("name", {
         header: "Name",
-    },
-    {
-        accessorKey: "phoneNumber",
-        header: "Phone Number",
-    },
-    {
-        accessorKey: "email",
+    }),
+    columnHelper.accessor("phoneNumber", {
+        header: "Phone Number"
+    }),
+    columnHelper.accessor("email", {
         header: "Email",
-    },
-    {
-        accessorKey: "amount",
-        header: () => "Amount",
+    }),
+    columnHelper.accessor("amount", {
+        header: "Amount",
+        enableSorting: false,
         cell: ({ row }) => {
             const amount = parseFloat(row.getValue("amount"))
             const formatted = new Intl.NumberFormat("en-US", {
@@ -30,6 +27,6 @@ export const columns: ColumnDef<Payment>[] = [
             }).format(amount)
 
             return <div className="font-medium">{formatted}</div>
-        },
-    },
+        }
+    })
 ]

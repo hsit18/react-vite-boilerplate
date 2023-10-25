@@ -43,8 +43,8 @@ export function DataTableWithInfiniteLoading<TData, TValue>({
   })
 
   return (
-    <Table>
-      <TableHeader>
+    <Table className="w-full">
+      <TableHeader className="bg-white sticky top-0">
         {table.getHeaderGroups().map((headerGroup) => (
           <TableRow key={headerGroup.id}>
             {headerGroup.headers.map((header) => {
@@ -69,7 +69,7 @@ export function DataTableWithInfiniteLoading<TData, TValue>({
           </TableRow>
         ))}
       </TableHeader>
-      <TableBody>
+      <TableBody className="h-96 overflow-y-auto">
         {isLoading && (
           <TableLoading totalColumns={columns.length} totalRows={5} />
         )}
