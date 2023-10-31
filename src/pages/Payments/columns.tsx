@@ -18,7 +18,6 @@ export const columns = [
     }),
     columnHelper.accessor("amount", {
         header: "Amount",
-        enableSorting: false,
         cell: ({ row }) => {
             const amount = parseFloat(row.getValue("amount"))
             const formatted = new Intl.NumberFormat("en-US", {

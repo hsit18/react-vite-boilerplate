@@ -1,7 +1,7 @@
 import { columns } from "./columns";
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { getPaginatedUserData } from "@/services/usersData";
-import { DataTableWithInfiniteLoading } from "@/components/DataTableWithInfiniteLoading";
+import { DataTableWithInfiniteLoading } from "@/components/DataTable/DataTableWithInfiniteLoading";
 import { UserApiResponse } from "@/types/user";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 

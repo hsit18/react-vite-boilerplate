@@ -10,7 +10,7 @@ type TableLoadingProps = {
   totalRows: number
 }
 
-export const TableLoading = ({ totalColumns, totalRows = 1 }: TableLoadingProps) => {
+const DataTableLoading = ({ totalColumns, totalRows = 1 }: TableLoadingProps) => {
   return (
     <>
       {[...Array(totalRows).keys()].map(n => (
@@ -22,4 +22,6 @@ export const TableLoading = ({ totalColumns, totalRows = 1 }: TableLoadingProps)
       ))}
     </>
   )
-}
+};
+
+export default DataTableLoading;
