@@ -1,6 +1,5 @@
 import {
   ColumnDef,
-  flexRender,
   getCoreRowModel,
   useReactTable,
   SortingState,
@@ -11,15 +10,12 @@ import React from "react";
 import {
   Table,
   TableBody,
-  TableHead,
   TableHeader,
-  TableRow,
 } from "@/components/ui/table";
-import { ArrowDownAZ, ArrowUpAZ, ArrowUpDown } from "lucide-react";
 import DataTableLoading from "@/components/DataTable/components/DataTableLoading";
-import DataTableRow from "../components/DataTableRow";
-import DataTableEmpty from "../components/DataTableEmpty";
-import DataTableHeaderRow from "../components/DataTableHeaderRow";
+import DataTableRow from "./components/DataTableRow";
+import DataTableEmpty from "./components/DataTableEmpty";
+import DataTableHeaderRow from "./components/DataTableHeaderRow";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]

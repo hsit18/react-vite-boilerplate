@@ -58,7 +58,7 @@ export const DataTable = <TData, TValue>({
             <DataTableLoading totalColumns={columns.length} totalRows={5} />
           )}
           {(table.getRowModel().rows || []).map((row) => (
-            <DataTableRow key={row.id} row={row} />
+            <DataTableRow key={row.id} row={row} className="p-6" />
           ))}
           {!isLoading && table.getRowModel().rows?.length === 0 &&
             <DataTableEmpty columnCount={columns.length} />
