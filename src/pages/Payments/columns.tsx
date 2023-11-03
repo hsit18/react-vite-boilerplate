@@ -1,8 +1,9 @@
 import { Payment } from "@/types/payment";
-import { createColumnHelper } from "@tanstack/react-table";
+import { createColumnHelper, ColumnDef } from "@tanstack/react-table";
 
 const columnHelper = createColumnHelper<Payment>();
-export const columns = [
+
+export const columns: ColumnDef<Payment, any>[] = [
     columnHelper.accessor("status", {
         header: "Status",
         enableSorting: true

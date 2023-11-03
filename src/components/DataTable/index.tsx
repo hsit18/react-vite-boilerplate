@@ -1,6 +1,5 @@
 import {
   ColumnDef,
-  flexRender,
   getCoreRowModel,
   getPaginationRowModel,
   useReactTable,
@@ -12,12 +11,9 @@ import React from "react";
 import {
   Table,
   TableBody,
-  TableHead,
   TableHeader,
-  TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { ArrowDownAZ, ArrowUpAZ, ArrowUpDown } from "lucide-react";
 
 import DataTableLoading from "@/components/DataTable/components/DataTableLoading";
 import DataTableRow from "./components/DataTableRow";
@@ -54,6 +50,7 @@ export const DataTable = <TData, TValue>({
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <DataTableHeaderRow key={headerGroup.id} headerGroup={headerGroup} />
+
           ))}
         </TableHeader>
         <TableBody>
