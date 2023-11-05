@@ -5,10 +5,11 @@ export function createRandomData(): Payment {
   return {
     id: faker.string.uuid(),
     name: faker.person.fullName(),
-    phoneNumber: faker.phone.number('501-###-###'),
+    phoneNumber: faker.phone.number(),
     amount: faker.number.int({ min: 0, max: 1000 }),
     status: faker.helpers.enumValue(PAYMENT_STATUS),
     email: faker.internet.email(),
+    company: faker.company.name()
   };
 }
 
@@ -21,9 +22,7 @@ export const getData = (): Payment[] => {
 const data = getData();
 
 export const getPaymentData = (): Promise<Payment[]> => {
-  return new Promise((resolve) => setTimeout(() => resolve(faker.helpers.multiple(createRandomData, {
-    count: 5000,
-  })), 100));
+  return new Promise((resolve) => setTimeout(() => resolve(data), 100));
 }
 
 export const getPaginatedPaymentData = (pageIndex: number, pageSize: number): Promise<Payment[]> => {

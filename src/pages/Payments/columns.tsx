@@ -4,10 +4,6 @@ import { createColumnHelper, ColumnDef } from "@tanstack/react-table";
 const columnHelper = createColumnHelper<Payment>();
 
 export const columns: ColumnDef<Payment, any>[] = [
-    columnHelper.accessor("status", {
-        header: "Status",
-        enableSorting: true
-    }),
     columnHelper.accessor("name", {
         header: "Name",
     }),
@@ -16,6 +12,14 @@ export const columns: ColumnDef<Payment, any>[] = [
     }),
     columnHelper.accessor("email", {
         header: "Email",
+    }),
+    columnHelper.accessor("company", {
+        header: "Company",
+        enableSorting: true
+    }),
+    columnHelper.accessor("status", {
+        header: "Status",
+        enableSorting: true
     }),
     columnHelper.accessor("amount", {
         header: "Amount",

@@ -12,4 +12,5 @@ export type Payment = {
   email: string
   amount: number
   status: PAYMENT_STATUS
+  company: string
 }
