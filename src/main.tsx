@@ -6,14 +6,10 @@ import {
 } from '@tanstack/react-query';
 
 import './styles/index.css';
-import {
-  RouterProvider,
-  createBrowserRouter
-} from "react-router-dom";
-import { routeConfig } from './routes';
+import { RouterProvider } from '@tanstack/react-router';
+import { router } from './route';
 
 const queryClient = new QueryClient();
-const router = createBrowserRouter(routeConfig);
 
 ReactDOM.createRoot(document.getElementById('app') as HTMLElement).render(
   <React.StrictMode>
