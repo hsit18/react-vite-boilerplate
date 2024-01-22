@@ -54,7 +54,7 @@ const Users = () => {
     }, [fetchMoreOnBottomReached])
 
     return (
-        <div className="table-wrp block overflow-auto h-[600px]"
+        <div className="table-wrp block overflow-auto h-[800px]"
             onScroll={e => fetchMoreOnBottomReached(e.target as HTMLDivElement)}
             ref={tableContainerRef}
         >

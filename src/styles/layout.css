@@ -1,0 +1,29 @@
+header {
+  grid-area: header;
+  border-bottom: 1px solid grey;
+}
+
+main {
+  grid-area: content;
+  padding: 8px;
+}
+
+aside {
+  grid-area: side;
+}
+
+footer {
+  grid-area: footer;
+}
+
+.main-container {
+  display: grid;
+  grid-template-areas:
+    'header header'
+    'side content'
+    'footer footer';
+
+  grid-template-columns: minmax(15%, 150px) 1fr;
+  grid-template-rows: 40px 1fr auto;
+  height: 100vh;
+}

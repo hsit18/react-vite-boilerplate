@@ -6,6 +6,7 @@ import {
 } from '@tanstack/react-query';
 
 import './styles/index.css';
+import './styles/layout.css';
 import { RouterProvider } from '@tanstack/react-router';
 import { router } from './route';
 
