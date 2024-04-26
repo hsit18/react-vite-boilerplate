@@ -25,7 +25,7 @@ export const AppShell = () => {
                     </li>
                 </ul>
             </aside>
-            <main className="overflow-auto ">
+            <main className="overflow-auto">
                 <Outlet />
             </main>
         </div>

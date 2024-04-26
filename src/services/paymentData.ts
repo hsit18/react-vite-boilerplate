@@ -25,6 +25,9 @@ export const getPaymentData = (): Promise<Payment[]> => {
   return new Promise((resolve) => setTimeout(() => resolve(data), 100));
 }
 
-export const getPaginatedPaymentData = (pageIndex: number, pageSize: number): Promise<Payment[]> => {
-  return new Promise((resolve) => setTimeout(() => resolve(data.slice((pageIndex - 1) * pageSize, pageIndex * pageSize)), 1000));
+export const getPaginatedPaymentData = (pageIndex: number, pageSize: number): Promise<{ data: Payment[], total: number }> => {
+  return new Promise((resolve) => setTimeout(() => resolve({
+    total: data.length,
+    data: data.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize)
+  }), 1000));
 }
