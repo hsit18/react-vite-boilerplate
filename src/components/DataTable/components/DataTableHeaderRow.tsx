@@ -10,7 +10,7 @@ type DataTableHeaderRowProps<TData> = {
     headerGroup: HeaderGroup<TData>
 }
 
-const DataTableHeaderRow = <TData, TValue>({ headerGroup }: DataTableHeaderRowProps<TData>) => {
+const DataTableHeaderRow = <TData, _>({ headerGroup }: DataTableHeaderRowProps<TData>) => {
     return (
 
         <TableRow key={headerGroup.id}>

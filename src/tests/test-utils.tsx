@@ -8,14 +8,14 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
-import { routeConfig } from '../routes';
+// import { routeConfig } from '../routes';
 
 const AllTheProviders = ({ children }: { children: ReactNode }) => {
   const options = isValidElement(children)
     ? [{ element: children, path: "/" }]
     : [];
 
-  const router = createMemoryRouter([...options, ...routeConfig], {
+  const router = createMemoryRouter([...options], {
     initialEntries: ["/"],
   });
 

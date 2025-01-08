@@ -9,7 +9,7 @@ interface DataTableRowProps<TData> extends React.PropsWithChildren<React.HTMLAtt
     row: Row<TData>
 };
 
-const DataTableRow = <TData, TValue>({ row, className }: DataTableRowProps<TData>) => {
+const DataTableRow = <TData, _>({ row, className }: DataTableRowProps<TData>) => {
     return (
         <TableRow
             role="row"

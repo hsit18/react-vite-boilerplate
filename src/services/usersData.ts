@@ -5,7 +5,7 @@ export function createRandomData(): User {
   return {
     id: faker.string.uuid(),
     name: faker.person.fullName(),
-    phoneNumber: faker.phone.number('501-###-###'),
+    phoneNumber: faker.phone.number({style: "national"}),
     email: faker.internet.email(),
     gender: faker.helpers.enumValue(GENDER_TYPE),
     status: faker.helpers.enumValue(APPROVAL_STATUS)

@@ -26,7 +26,7 @@ const userRoute = new Route({
     component: () => <Users />,
 });
 
-const routeTree = rootRoute.addChildren([paymentRoute, userRoute, homeRoute])
+export const routeTree = rootRoute.addChildren([paymentRoute, userRoute, homeRoute])
 
 export const router = new Router({ routeTree })
 
