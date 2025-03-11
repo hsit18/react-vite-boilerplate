@@ -2,25 +2,22 @@ import { columns } from "./columns";
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { getPaginatedUserData } from "@/services/usersData";
 import { DataTableWithInfiniteLoading } from "@/components/DataTable/DataTableWithInfiniteLoading";
-import { UserApiResponse } from "@/types/user";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 
 const PAGE_SIZE = 50;
 const Users = () => {
     const tableContainerRef = useRef<HTMLDivElement>(null);
-    const { data, fetchNextPage, isFetching, isLoading } = useInfiniteQuery<UserApiResponse>(
-        ['users'],
-        async ({ pageParam = 0 }) => {
+    const { data, fetchNextPage, isFetching, isLoading } = useInfiniteQuery({
+        queryKey: ['users'],
+        queryFn: async ({ pageParam = 0 }) => {
             const res = await getPaginatedUserData(pageParam, PAGE_SIZE);
             return res;
         },
-        {
-            getNextPageParam: (lastPage, allPages) => (allPages.length * PAGE_SIZE) < lastPage.totalRecords ? allPages.length : undefined,
-            getPreviousPageParam: (_, allPages) => allPages.length > 0 ? allPages.length - 1 : undefined,
-            keepPreviousData: true,
-            refetchOnWindowFocus: false,
-        }
-    );
+        initialPageParam: 0,
+        getNextPageParam: (lastPage, allPages) => (allPages.length * PAGE_SIZE) < lastPage.totalRecords ? allPages.length : undefined,
+        getPreviousPageParam: (_, allPages) => allPages.length > 0 ? allPages.length - 1 : undefined,
+        refetchOnWindowFocus: false,
+    });
 
     const flatData = useMemo(
         () => data?.pages?.flatMap(page => page.data) ?? [],
