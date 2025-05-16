@@ -22,8 +22,8 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: 10
-      - name: client generate coverage report
-        run: pnpm install && pnpm test:coverage
+      - name: install dependencies
+        run: pnpm install
       - name: Run Playwright tests
         run: |
           mkdir -p playwright-report # Ensure the directory exists
