@@ -8,6 +8,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "postinstall": "pnpm exec playwright install",
     "build": "tsc && vite build",
     "lint": "eslint src --color",
     "lint:fix": "eslint src --fix --color",
@@ -15,7 +16,7 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "preview": "vite preview",
-    "test:e2e": "yarn playwright test"
+    "test:e2e": "playwright test"
   },
   "devDependencies": {
     "@faker-js/faker": "^9.5.1",
