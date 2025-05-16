@@ -6,7 +6,7 @@ on:
     branches: [main, master]
 jobs:
   build:
-    name: generate coverage report
+    name: setup and playwright
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -24,10 +24,11 @@ jobs:
           version: 10
       - name: install dependencies
         run: pnpm install
+
       - name: Run Playwright tests
         run: |
           mkdir -p playwright-report # Ensure the directory exists
-          yarn playwright test
+          pnpm test:e2e
       - uses: actions/upload-artifact@v4
         if: always()
         with:
